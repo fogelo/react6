@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-      Здарова
+      Здарова1
       </header>
     </div>
   );
