@@ -1,10 +1,12 @@
 .App-wrapper {
+    width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-rows: 100px 1fr;
     grid-template-columns: 2fr 10fr;
-  /*Расстояние между строк*/
+    /*Расстояние между строк*/
     grid-gap: 10px;
-  grid-template-areas: "h h" "n c";
+    grid-template-areas: "h h" "n c";
 }
 
 .Header {
@@ -26,7 +28,10 @@
     grid-area: c;
     background-color: #007ba2;
 }
-
+.Content img {
+    width: 100%;
+    height: 50%;
+}
 /*.Navbar {*/
 /*  background-color: yellow;*/
 /*}*/
