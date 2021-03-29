@@ -1,0 +1,8 @@
+.Navbar {
+    grid-area: n;
+    background-color: yellow;
+}
+
+.Item {
+    color: #941717;
+}

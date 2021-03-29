@@ -9,29 +9,3 @@
     grid-template-areas: "h h" "n c";
 }
 
-.Header {
-    grid-area: h;
-    background-color: #ff0000;
-
-}
-
-.Header img {
-    width: 50px;
-}
-
-.Navbar {
-    grid-area: n;
-    background-color: yellow;
-}
-
-.Content {
-    grid-area: c;
-    background-color: #007ba2;
-}
-.Content img {
-    width: 100%;
-    height: 50%;
-}
-/*.Navbar {*/
-/*  background-color: yellow;*/
-/*}*/
