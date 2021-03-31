@@ -1,5 +1,3 @@
-// import classes from ''
-
 const Dialogs = () => {
 
     return  (
