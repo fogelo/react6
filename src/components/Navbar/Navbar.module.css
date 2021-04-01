@@ -1,8 +1,13 @@
 .Navbar {
     grid-area: n;
-    background-color: yellow;
+    background-color: #405b2d;
 }
 
-.Item {
-    color: #941717;
+.Item a {
+    color: white;
+    text-decoration: none;
+}
+
+.Item a.activeLink {
+    color: gold;
 }
