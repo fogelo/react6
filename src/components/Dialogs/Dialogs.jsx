@@ -6,27 +6,13 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
 
     // Объекты, которые собраны в массив
-    let dialogsData = [
-        {id: 1, name: 'Jhon'},
-        {id: 2, name: 'Sveta'},
-        {id: 3, name: 'Mary'},
-        {id: 4, name: 'Dima'},
-        {id: 5, name: 'Valera'},
-        {id: 6, name: 'Viktor'}
-    ]
-let dialogsElements = dialogsData.map (d => <DialogItem name={d.name} id={d.id}/>)
 
-    let messagesData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'How are you?'},
-        {id: 3, message: 'Yo'},
-        {id: 4, message: 'Who are you?'},
-        {id: 5, message: 'Where do you live?'},
-    ]
+let dialogsElements = props.dialogsData.map (d => <DialogItem name={d.name} id={d.id}/>)
+
     // m - это объект ({id: 1, message: 'Hi'}), который содержится в переменной messageData. Значит message. Их
     // можно писать сокращенно
 
-    let messagesElements = messagesData.map (m => <Message message={m.message}/>)
+    let messagesElements = props.messagesData.map (m => <Message message={m.message}/>)
 
 
 
