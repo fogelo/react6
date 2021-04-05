@@ -1,7 +1,9 @@
 import classes from './Profileinfo.module.css'
 
 
-const Profileinfo = () => {
+const Profileinfo = (props) => {
+
+
     return (
         <div>
             <img

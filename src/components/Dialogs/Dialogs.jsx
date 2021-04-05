@@ -7,14 +7,12 @@ const Dialogs = (props) => {
 
     // Объекты, которые собраны в массив
 
-let dialogsElements = props.dialogsData.map (d => <DialogItem name={d.name} id={d.id}/>)
+    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 
     // m - это объект ({id: 1, message: 'Hi'}), который содержится в переменной messageData. Значит message. Их
     // можно писать сокращенно
 
-    let messagesElements = props.messagesData.map (m => <Message message={m.message}/>)
-
-
+    let messagesElements = props.state.messages.map(m => <Message message={m.message}/>);
 
 // //Обьекты, которые нужно собрать в массив
 //     let j = {
