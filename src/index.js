@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import state from './redux/state';
+import { BrowserRouter } from "react-router-dom";
 
 //Рисуется тег App
 ReactDOM.render(
   <React.StrictMode>
     {/*<App posts={posts} messagesData={messagesData} dialogsData={dialogsData}/>*/}
-    <App state={state}/>
+      <BrowserRouter>
+          <App state={state}/>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
