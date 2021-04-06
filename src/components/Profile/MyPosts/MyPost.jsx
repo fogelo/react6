@@ -3,22 +3,23 @@ import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React from 'react';
 
-//Специальная переменная которая будет содержать ссылку на переменную из jsx
-let newPostElement = React.createRef();
 
-let addPost = () => {
-    let text = newPostElement.current.value;
-    alert(text);
-}
 
 const MyPost = (props) => {
 
 
     // let postsElements = props.posts.map (p => <Post message={p.message} id={p.id} likesCount={p.likesCount}/>
-    let postsElements = props.posts.map(p => <Post message={p.message}/>
+    let postsElements = props.posts.map(p => <Post message={p.message}/>);
 
+    //Специальная переменная которая будет содержать ссылку на переменную из jsx
+    let newPostElement = React.createRef();
 
-)
+    let addPost = () => {
+        debugger;
+        let text = newPostElement.current.value;
+        props.addPost(text);
+    }
+
     return (
         <div className={classes.postBlock}>
             <h3>My posts</h3>

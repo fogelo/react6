@@ -1,5 +1,4 @@
 let state = {
-
     profilePage: {
         posts: [
             {id: 1, message: 'It is my first post', likesCount: '10'},
@@ -9,7 +8,6 @@ let state = {
         ],
 
     },
-
     dialogsPage: {
         dialogs: [
             {id: 1, name: 'Jhon'},
@@ -27,6 +25,17 @@ let state = {
             {id: 5, message: 'Where do you live?'},
         ],
     }
+}
 
+export let addPost = (postMessage) => {
+    debugger;
+
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likesCount: '0',
+    };
+    // -push это метод массива, который в конец добавляет новый элемент
+    state.profilePage.posts.push(newPost);
 }
 export default state;
