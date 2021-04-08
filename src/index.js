@@ -7,7 +7,7 @@ import state from './redux/state';
 import {addPost} from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
 
-// addPost('ты лох');
+// addPost('хай');
 
 //Рисуется тег App
 ReactDOM.render(

@@ -28,7 +28,6 @@ let state = {
 }
 
 export let addPost = (postMessage) => {
-    debugger;
 
     let newPost = {
         id: 5,
