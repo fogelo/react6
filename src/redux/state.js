@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
     profilePage: {
         posts: [
@@ -36,5 +38,7 @@ export let addPost = (postMessage) => {
     };
     // -push это метод массива, который в конец добавляет новый элемент
     state.profilePage.posts.push(newPost);
-}
+    rerenderEntireTree(state);
+
+    }
 export default state;
