@@ -18,9 +18,9 @@ let rerenderEntireTree = (state) => {
             {/*<App posts={posts} messagesData={messagesData} dialogsData={dialogsData}/>*/}
             <BrowserRouter>
                 <App state={state}
-                     addPost={store.addPost.bind(store)} // связываем функцию addPost c ее расположение в store,
+                     dispatch={store.dispatch.bind(store)} // связываем функцию addPost c ее расположение в store,
                     // нужно связывать так только тогда когда функция не вызывается, а прокидывается вглубь
-                     updateNewPostText={store.updateNewPostText.bind(store)}/>
+                     />
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root'));

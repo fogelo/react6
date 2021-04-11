@@ -4,7 +4,6 @@ import Post from "./Post/Post";
 import React from 'react';
 
 
-
 const MyPost = (props) => {
 
 
@@ -15,15 +14,20 @@ const MyPost = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.addPost();
+
+        //props.addPost(text);
+        props.dispatch({type: 'ADD-POST'});
         //newPostElement.current.value = ' ';  //Зануление строки с добавлением нового поста
 
-    }
-let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
 
-}
+    }
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        //props.updateNewPostText(text);
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        props.dispatch(action);
+
+    }
     return (
         <div className={classes.postBlock}>
             <h3>My posts</h3>
