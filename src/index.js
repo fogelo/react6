@@ -1,13 +1,31 @@
 import React from 'react';
+import state, { subscribe } from "./redux/state";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {rerenderEntireTree} from "./render";
-import state from "./redux/state";
+import {addPost} from "./redux/state";
+import { BrowserRouter } from "react-router-dom";
+import {updateNewPostText} from "./redux/state";
 
 // addPost('хай');
 
+
+let rerenderEntireTree = (state) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            {/*<App posts={posts} messagesData={messagesData} dialogsData={dialogsData}/>*/}
+            <BrowserRouter>
+                <App state={state}
+                     addPost={addPost}
+                     updateNewPostText={updateNewPostText}/>
+            </BrowserRouter>
+        </React.StrictMode>,
+        document.getElementById('root'));
+}
+
 rerenderEntireTree(state);
+
+subscribe(rerenderEntireTree);
 
 reportWebVitals();
