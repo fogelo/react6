@@ -1,6 +1,6 @@
 import { rerenderEntireTree } from "../render";
-
 let state = {
+
     profilePage: {
         posts: [
             {id: 1, message: 'It is my first post', likesCount: '10'},
@@ -8,6 +8,7 @@ let state = {
             {id: 3, message: 'It is my third post', likesCount: '8'},
             {id: 4, message: 'It is my fourth post?', likesCount: '3'},
         ],
+        newPostText: 'it.com'
 
     },
     dialogsPage: {
@@ -29,16 +30,26 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+window.state = state;// теперь можно ввести в консоле в браузере state и посмотреть что находится в state
+
+export let addPost = () => {
 
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: '0',
     };
     // -push это метод массива, который в конец добавляет новый элемент
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText='';
+    rerenderEntireTree(state);
+    }
+
+export let updateNewPostText = (newText) => {
+
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 
-    }
+}
+
 export default state;
