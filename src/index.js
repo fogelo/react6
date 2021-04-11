@@ -1,12 +1,13 @@
 import React from 'react';
-import state, { subscribe } from "./redux/state";
+//import state, { subscribe } from "./redux/state";
+import store from "./redux/state";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {addPost} from "./redux/state";
+//import {addPost} from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
-import {updateNewPostText} from "./redux/state";
+//import {updateNewPostText} from "./redux/state";
 
 // addPost('хай');
 
@@ -17,15 +18,16 @@ let rerenderEntireTree = (state) => {
             {/*<App posts={posts} messagesData={messagesData} dialogsData={dialogsData}/>*/}
             <BrowserRouter>
                 <App state={state}
-                     addPost={addPost}
-                     updateNewPostText={updateNewPostText}/>
+                     addPost={store.addPost.bind(store)} // связываем функцию addPost c ее расположение в store,
+                    // нужно связывать так только тогда когда функция не вызывается, а прокидывается вглубь
+                     updateNewPostText={store.updateNewPostText.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root'));
 }
 
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 reportWebVitals();
