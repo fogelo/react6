@@ -2,6 +2,7 @@ import './MyPosts.module.css'
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React from 'react';
+import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/state";
 
 
 const MyPost = (props) => {
@@ -16,7 +17,7 @@ const MyPost = (props) => {
     let addPost = () => {
 
         //props.addPost(text);
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(addPostActionCreator());
         //newPostElement.current.value = ' ';  //Зануление строки с добавлением нового поста
 
 
@@ -24,7 +25,7 @@ const MyPost = (props) => {
     let onPostChange = () => {
         let text = newPostElement.current.value;
         //props.updateNewPostText(text);
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        let action = updateNewPostTextActionCreator(text);
         props.dispatch(action);
 
     }

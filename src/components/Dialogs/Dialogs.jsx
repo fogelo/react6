@@ -2,17 +2,29 @@ import classes from "./Dialogs.module.css"
 import { NavLink } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import { sendMessagesCreator, updateNewMessageBodyCreator } from "../../redux/state";
 
 const Dialogs = (props) => {
 
     // Объекты, которые собраны в массив
-
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
+    let state = props.store.getState().dialogsPage;
+    let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 
     // m - это объект ({id: 1, message: 'Hi'}), который содержится в переменной messageData. Значит message. Их
     // можно писать сокращенно
 
-    let messagesElements = props.state.messages.map(m => <Message message={m.message}/>);
+    let messagesElements = state.messages.map(m => <Message message={m.message}/>);
+    let newMessageBody = state.newMessageBody;
+
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessagesCreator());
+
+    }
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(body));
+    }
+
 
 // //Обьекты, которые нужно собрать в массив
 //     let j = {
@@ -38,7 +50,15 @@ const Dialogs = (props) => {
             </div>
 
             <div className={classes.messages}>
-                {messagesElements}
+                <div>{messagesElements}</div>
+                <div>
+                    <div><textarea value={newMessageBody}
+                                   onChange={onNewMessageChange}
+                                   placeholder='Enter your messages'>  </textarea></div>
+                    <div>
+                        <button onClick={onSendMessageClick}>Send</button>
+                    </div>
+                </div>
                 {/*<Message message={messagesData[0].message} id={messagesData[0].id}/>*/}
                 {/*<Message message={messagesData[1].message} id={messagesData[1].id}/>*/}
                 {/*<Message message={messagesData[2].message} id={messagesData[2].id}/>*/}
