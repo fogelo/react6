@@ -7,7 +7,7 @@ import { sendMessagesCreator, updateNewMessageBodyCreator } from "../../redux/di
 const Dialogs = (props) => {
 
     // Объекты, которые собраны в массив
-    let state = props.store.getState().dialogsPage;
+    let state = props.dialogsPage;
     let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 
     // m - это объект ({id: 1, message: 'Hi'}), который содержится в переменной messageData. Значит message. Их
@@ -17,12 +17,12 @@ const Dialogs = (props) => {
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessagesCreator());
+        props.sendMessage();
 
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
+        props.updateNewMessageBody(body);
     }
 
 

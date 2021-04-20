@@ -2,7 +2,7 @@ import './MyPosts.module.css'
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React from 'react';
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
+
 
 
 const MyPost = (props) => {
@@ -14,19 +14,14 @@ const MyPost = (props) => {
     //Специальная переменная которая будет содержать ссылку на переменную из jsx
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-
-        //props.addPost(text);
-        props.dispatch(addPostActionCreator());
-        //newPostElement.current.value = ' ';  //Зануление строки с добавлением нового поста
-
-
+    let onAddPost = () => {
+        props.addPost();
     }
+
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        //props.updateNewPostText(text);
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch(action);
+        props.updateNewPostText(text);
+
 
     }
     return (
@@ -34,7 +29,7 @@ const MyPost = (props) => {
             <h3>My posts</h3>
             <div><textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/></div>
             <div>
-                <button onClick={addPost}>Add post</button>
+                <button onClick={onAddPost}>Add post</button>
             </div>
             {/*<Post message={posts[0].message} id={posts[0].id} likesCount={posts[0].likesCount}/>*/}
             {/*<Post message={posts[1].message} id={posts[1].id} likesCount={posts[1].likesCount}/>*/}
