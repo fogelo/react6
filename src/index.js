@@ -7,8 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import {addPost} from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
+import {Provider} from "./StoreContext";
 //import {updateNewPostText} from "./redux/state";
-
 // addPost('хай');
 
 
@@ -17,11 +17,7 @@ let rerenderEntireTree = (state) => {
         <React.StrictMode>
             {/*<App posts={posts} messagesData={messagesData} dialogsData={dialogsData}/>*/}
             <BrowserRouter>
-                <App state={state}
-                     dispatch={store.dispatch.bind(store)}
-                     store={store}// связываем функцию addPost c ее расположение в store,
-                    // нужно связывать так только тогда когда функция не вызывается, а прокидывается вглубь
-                />
+                <Provider store={store}><App/></Provider>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root'));

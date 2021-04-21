@@ -1,38 +1,31 @@
-import classes from "./Dialogs.module.css"
-import { NavLink } from "react-router-dom";
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+// import classes from "./Dialogs.module.css"
+// import { NavLink } from "react-router-dom";
+// import DialogItem from "./DialogItem/DialogItem";
+// import Message from "./Message/Message";
 import { sendMessagesCreator, updateNewMessageBodyCreator } from "../../redux/dialogs-reducer";
+import React from "react";
 import Dialogs from "./Dialogs";
+import StoreContext from "../../StoreContext";
+//import store from "../../redux/store";
 
-const DialogsContainer = (props) => {
+const DialogsContainer = () => {
 
-    // Объекты, которые собраны в массив
-    let state = props.store.getState().dialogsPage;
-
-    let onSendMessageClick = () => {
-        props.store.dispatch(sendMessagesCreator());
+    return <StoreContext.Consumer>
+        {   (store) => {
+            //let state = store.getState().dialogsPage;
+            let onSendMessageClick = () => {
+                store.dispatch(sendMessagesCreator());
+            }
+            let onNewMessageChange = (body) => {
+                store.dispatch(updateNewMessageBodyCreator(body));
+            }
+            return <Dialogs updateNewMessageBody={onNewMessageChange}
+                            sendMessage={onSendMessageClick}
+                            dialogsPage={store.getState().dialogsPage}/>
+        }
     }
+    </StoreContext.Consumer>
 
-    let onNewMessageChange = (body) => {
-        props.store.dispatch(updateNewMessageBodyCreator(body));
-    }
-
-
-// //Обьекты, которые нужно собрать в массив
-//     let j = {
-//         id: 1,
-//         name: 'Jhon'
-//     }
-//     let j = {
-//         id: 2,
-//         name: 'Sveta'
-//     }
-
-         return (<Dialogs updateNewMessageBody={onNewMessageChange}
-                     sendMessage={onSendMessageClick}
-                     dialogsPage={state}
-    />)
 }
 
 export default DialogsContainer;
