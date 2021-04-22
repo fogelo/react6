@@ -7,7 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import {addPost} from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
-import {Provider} from "./StoreContext";
+//import {Provider} from "./StoreContext";
+import {Provider} from "react-redux"
 //import {updateNewPostText} from "./redux/state";
 // addPost('хай');
 
